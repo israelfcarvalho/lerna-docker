@@ -1,5 +1,5 @@
 {
-    "name": "lerna-docker-apps-front",
+    "name": "@lerna-docker/front",
     "private": true,
     "scripts": {
         "dev": "next dev",
