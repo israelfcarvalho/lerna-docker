@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "noImplicitAny": true,
+        "allowJs": true,
+        "incremental": true,
+        "skipLibCheck": true
+    },
+    "exclude": [
+		"node_modules"
+	]
+}
