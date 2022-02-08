@@ -2,26 +2,14 @@
     "root": true,
 	"extends": [
         "next/core-web-vitals",
-		"prettier",
         "eslint:recommended",
-        "plugin:json/recommended",
-        "plugin:@typescript-eslint/recommended"
+        "plugin:@typescript-eslint/recommended",
+        "@lerna-docker/eslint-config"
 	],
-    "plugins": ["prettier", "react", "json", "better-styled-components", "@typescript-eslint"],
+    "plugins": [ "react", "better-styled-components", "@typescript-eslint"],
 	"rules": {
         "@typescript-eslint/padding-line-between-statements": "error",
         "json/json": ["error", "allowComments"],
-		"camelcase": "warn",
-        "prettier/prettier": [
-            "error", {
-                "printWidth": 120,
-                "trailingComma": "es5",
-                "tabWidth": 4,
-                "useTabs": false,
-                "bracketSpacing": true,
-                "semi": false,
-                "singleQuote": true
-            }
-        ]
+		"camelcase": "warn"
 	}
 }
