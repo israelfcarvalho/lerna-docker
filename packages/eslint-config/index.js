@@ -6,6 +6,7 @@ module.exports = {
         es6: true,
         node: true,
     },
+    plugins: ["prettier"],
     rules: {
         'no-unused-vars': 'warn',
         'prettier/prettier': ['error', prettierConfig],

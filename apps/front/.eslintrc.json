@@ -4,7 +4,7 @@
         "next/core-web-vitals",
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "@lerna-docker/eslint-config"
+        "@facanha/eslint-config"
 	],
     "plugins": [ "react", "better-styled-components", "@typescript-eslint"],
 	"rules": {

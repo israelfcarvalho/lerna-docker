@@ -1,6 +1,9 @@
 {
-  "packages": [
-    "apps/*", "packages/*"
-  ],
-  "version": "independent"
+  "packages": ["apps/*", "packages/*"],
+  "version": "independent",
+  "command": {
+    "bootstrap": {
+      "hoist": "-"
+    }
+  }
 }
