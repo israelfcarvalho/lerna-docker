@@ -1,13 +1,8 @@
-import { Body, Controller, Get, Param, Post, Redirect, Req, Res } from '@nestjs/common'
+import { Body, Controller, Get, HttpStatus, Param, Post, Redirect, Req, Res } from '@nestjs/common'
 import { Request, Response } from 'express'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
-
-interface User {
-    id: number
-    name: string
-    age: number
-}
+import { CreateUserDto, User } from './users.dto'
 
 function fetchUsers() {
     return JSON.parse(readFileSync(join(process.cwd(), 'src/.db/users.json'), { encoding: 'utf8' }))
@@ -47,7 +42,7 @@ export class UsersController {
     }
 
     @Get('all')
-    @Redirect('http://localhost:4000/users', 302)
+    @Redirect('http://localhost:4000/users', HttpStatus.FOUND)
     all() {
         return
     }
@@ -64,7 +59,7 @@ export class UsersController {
         const user = this.users.find(user => user.id == id)
 
         if (!user) {
-            res.status(404).send({ message: "User don't exists" })
+            res.status(HttpStatus.NOT_FOUND).send({ message: "User don't exists" })
             return
         }
 
@@ -72,33 +67,37 @@ export class UsersController {
     }
 
     @Post()
-    add(@Res() response: Response, @Body() body: Partial<Omit<User, 'id'>>) {
+    add(@Res() response: Response, @Body() body: Partial<CreateUserDto>) {
         const errors: Array<string> = []
         const oldUsers = this.users
 
         console.log({ body })
 
-        if (!body.age) {
-            errors.push('Age is required and needs to be grater than 0!')
+        if (!body.birthDate) {
+            errors.push('birthDate is required and needs to be grater than 0!')
         }
 
         if (!body.name || body.name.length < 3) {
-            errors.push('Name is required and needs have 3 caracters or more!')
+            errors.push('name is required and needs have 3 caracters or more!')
         }
 
         if (errors.length) {
-            response.status(400).json(errors)
+            response.status(HttpStatus.BAD_REQUEST).json(errors)
             return
         }
 
         try {
-            const newUsers = oldUsers.concat({ id: this._nextId, name: body.name || '', age: body.age || 0 })
+            const newUsers = oldUsers.concat({
+                id: this._nextId,
+                name: body.name || '',
+                birthDate: body.birthDate || '',
+            })
 
             writeFileSync(join(process.cwd(), 'src/.db/users.json'), JSON.stringify(newUsers), { encoding: 'utf8' })
             this._upToDate = false
-            response.status(204).send()
+            response.status(HttpStatus.CREATED).send()
         } catch (error) {
-            response.status(400).send()
+            response.status(HttpStatus.INTERNAL_SERVER_ERROR).send()
         }
     }
 }
