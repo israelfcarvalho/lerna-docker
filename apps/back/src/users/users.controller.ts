@@ -12,6 +12,7 @@ import {
 } from '@nestjs/common'
 import { readFileSync, writeFileSync } from 'fs'
 import { join } from 'path'
+import { BadRequestException } from 'src/errors/exceptions'
 import { CreateUserDto, User } from './users.dto'
 
 function fetchUsers() {
@@ -81,8 +82,6 @@ export class UsersController {
         const errors: Array<string> = []
         const oldUsers = this.users
 
-        console.log({ body })
-
         if (!body.birthDate) {
             errors.push('birthDate is required and needs to be grater than 0!')
         }
@@ -92,7 +91,7 @@ export class UsersController {
         }
 
         if (errors.length) {
-            throw new HttpException(errors, HttpStatus.BAD_REQUEST)
+            throw new BadRequestException(errors)
         }
 
         try {
