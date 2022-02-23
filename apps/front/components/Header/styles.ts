@@ -1,18 +1,25 @@
-import styled, { css, DefaultTheme, ThemedCssFunction, ThemedStyledFunction, ThemedStyledProps, ThemeProps } from 'styled-components'
+import styled, { css, DefaultTheme, ThemeProps } from 'styled-components'
 
 const headerHorizontalPadding: Keyof<DefaultTheme['spacing']> = 'medium'
 
 export const Container = styled.header`
     display: flex;
 
-    padding: ${({theme: {spacing}}) => `0 ${spacing.medium}`};
+    padding: ${({ theme: { spacing } }) => `0 ${spacing.medium}`};
 
-    box-shadow: ${({theme: {colors: {grey}}}) => `0 2px 4px 0 ${grey}55`};
+    box-shadow: ${({
+        theme: {
+            colors: { grey },
+        },
+    }) => `0 2px 4px 0 ${grey}55`};
+
+    position: sticky;
+    top: 0px;
 `
 
-const addHeaderItemCss = ({theme: {spacing}}: ThemeProps<DefaultTheme>) => {
+const addHeaderItemCss = ({ theme: { spacing } }: ThemeProps<DefaultTheme>) => {
     return css`
-        padding: ${({ theme: { spacing } }) => `${spacing[headerHorizontalPadding]} 0`};
+        padding: ${spacing[headerHorizontalPadding]} 0;
     `
 }
 
@@ -30,5 +37,4 @@ export const Home = styled.div`
     ${addHeaderItemCss}
 `
 
-export const Routes = styled.div`
-`
+export const Routes = styled.div``

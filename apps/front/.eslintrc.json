@@ -3,10 +3,9 @@
 	"extends": [
         "next/core-web-vitals",
         "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
         "@facanha/eslint-config"
 	],
-    "plugins": [ "react", "better-styled-components", "@typescript-eslint"],
+    "plugins": [ "react", "better-styled-components"],
 	"rules": {
         "@typescript-eslint/padding-line-between-statements": "error",
         "json/json": ["error", "allowComments"],

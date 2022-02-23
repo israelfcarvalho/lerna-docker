@@ -18,7 +18,7 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({ navigationRoutes }) =
     return (
         <Container>
             <Home>
-                <LinkContainer  href="/">HOME</LinkContainer>
+                <LinkContainer href="/">HOME</LinkContainer>
             </Home>
             <Navbar>
                 <Routes>

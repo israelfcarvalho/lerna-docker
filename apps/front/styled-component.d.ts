@@ -11,7 +11,7 @@ declare module 'styled-components' {
             medium: Spacing
             large: Spacing
             huge: Spacing
-        },
+        }
         colors: {
             primary: string
             grey: string
