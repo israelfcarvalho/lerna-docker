@@ -2,6 +2,7 @@ import {
     Body,
     Controller,
     Get,
+    HostParam,
     HttpCode,
     HttpException,
     HttpStatus,
@@ -19,7 +20,7 @@ function fetchUsers() {
     return JSON.parse(readFileSync(join(process.cwd(), 'src/.db/users.json'), { encoding: 'utf8' }))
 }
 
-@Controller({ path: 'users', host: 'localhost' })
+@Controller({ path: 'users' /*, host: '*'*/ })
 export class UsersController {
     private _upToDate = false
     private _nextId = 0
@@ -59,8 +60,8 @@ export class UsersController {
     }
 
     @Get()
-    findAll(@Query() query) {
-        console.log({ query })
+    findAll(@Query() query, @HostParam() host) {
+        console.log({ query, host })
 
         return this.users
     }
