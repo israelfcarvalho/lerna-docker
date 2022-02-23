@@ -18,9 +18,11 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"jsx": "preserve"
+		"jsx": "preserve",
+		"typeRoots": ["node_modules/@types", "index.d.ts"]
 	},
 	"include": [
+		"index.d.ts",
 		"next-env.d.ts",
 		"**/*.ts",
 		"**/*.tsx"
