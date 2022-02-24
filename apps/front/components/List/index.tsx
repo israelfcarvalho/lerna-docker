@@ -8,10 +8,10 @@ interface ListItem {
 interface ListComponentProps {
     title?: string
     items: Array<ListItem>
-    emptyListMessage: string
+    emptyListMessage?: string
 }
 
-const ListComponent: React.FC<ListComponentProps> = ({ items, title, emptyListMessage }) => {
+const ListComponent: React.FC<ListComponentProps> = ({ items, title, emptyListMessage = 'No content' }) => {
     const hasItems = !!items.length
 
     return (
