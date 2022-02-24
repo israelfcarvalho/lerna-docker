@@ -4,7 +4,7 @@ import HeaderComponent from '../../components/Header'
 
 const HeaderContainer: React.FC = () => {
     const routes = useMemo<ComponentProps<typeof HeaderComponent>['navigationRoutes']>(
-        () => [{ name: 'Images', path: '/images' }],
+        () => [{ name: 'Docker Images', path: '/docker/images' }],
         []
     )
 
