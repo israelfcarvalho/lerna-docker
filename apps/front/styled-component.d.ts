@@ -15,6 +15,9 @@ declare module 'styled-components' {
         colors: {
             primary: string
             grey: string
+            greyLight10: string
+            greyLight20: string
+            greyLight30: string
         }
     }
 }

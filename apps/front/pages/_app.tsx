@@ -15,6 +15,9 @@ const theme: DefaultTheme = {
     colors: {
         primary: '#2e2547',
         grey: '#757575',
+        greyLight10: '#a9a9a9',
+        greyLight20: '#c9c9c9',
+        greyLight30: '#efefef',
     },
 }
 
