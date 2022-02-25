@@ -1,9 +1,9 @@
 import { NextPage, GetStaticProps } from 'next'
 import React from 'react'
-import ListComponent from '../../components/List'
+import AnnotationsComponent from '../../components/Annotations'
 
 const DockerImages: React.FC<NextPage> = () => {
-    return <ListComponent title="Docker Images" items={[]} />
+    return <AnnotationsComponent title="Docker Images" annotations={{}} />
 }
 
 export const getStaticProps: GetStaticProps = () => {

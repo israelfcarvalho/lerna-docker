@@ -16,6 +16,13 @@ export const ItemsContainer = styled.ul`
 
 export const Item = styled.li``
 
+export const Explanation = styled.p``
+
+export const ExplanationCommand = styled.span``
+export const ExplanationDescription = styled.span``
+
+export const Example = styled.p``
+
 export const EmptyList = styled.p`
     flex: 0.8;
     align-self: center;
