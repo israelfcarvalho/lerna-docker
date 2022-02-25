@@ -12,16 +12,27 @@ export const Title = styled.h1`
 
 export const ItemsContainer = styled.ul`
     display: grid;
+
+    padding: ${({ theme: { spacing } }) => `0 ${spacing.huge}`};
 `
 
 export const Item = styled.li``
 
 export const Explanation = styled.p``
 
-export const ExplanationCommand = styled.span``
+export const ExplanationCommand = styled.span`
+    font-weight: bold;
+    font-size: 20px;
+`
 export const ExplanationDescription = styled.span``
 
-export const Example = styled.p``
+export const Example = styled.p`
+    margin: 0;
+    padding: ${({ theme: { spacing } }) => spacing.medium};
+
+    background-color: ${({ theme: { colors } }) => colors.greyLight30};
+    box-shadow: ${({ theme: { colors } }) => `-8px 0 8px 0 ${colors.greyLight20} inset`};
+`
 
 export const EmptyList = styled.p`
     flex: 0.8;

@@ -47,7 +47,7 @@ const AnnotationsComponent: React.FC<AnnotationsComponentProps> = ({
                     {items.map((item, itemIndex) => (
                         <Item key={itemIndex}>
                             <Explanation>
-                                <ExplanationCommand>{item.command}</ExplanationCommand>
+                                <ExplanationCommand>{item.command}: </ExplanationCommand>
                                 <ExplanationDescription>{item.description}</ExplanationDescription>
                             </Explanation>
                             {!!item.example && <Example>{item.example}</Example>}

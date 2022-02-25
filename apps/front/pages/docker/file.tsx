@@ -2,7 +2,7 @@ import { NextPage, GetStaticProps } from 'next'
 import React from 'react'
 import AnnotationsComponent from '../../components/Annotations'
 
-type DockerFileAnnotationsTypes = 'From'
+type DockerFileAnnotationsTypes = 'FROM'
 
 interface DockerFileProps {
     annotations: Annotations<DockerFileAnnotationsTypes>
@@ -19,8 +19,8 @@ export const getStaticProps: GetStaticProps<DockerFileProps> = () => {
 export default DockerFile
 
 const annotations: DockerFileProps['annotations'] = {
-    From: {
-        command: 'From',
+    FROM: {
+        command: 'FROM',
         description: 'The container you want to start from',
         example: 'FROM node:16-alpine',
     },
