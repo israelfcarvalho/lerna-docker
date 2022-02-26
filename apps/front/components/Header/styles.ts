@@ -37,4 +37,10 @@ export const Home = styled.div`
     ${addHeaderItemCss}
 `
 
-export const Routes = styled.div``
+export const Routes = styled.div`
+    > * {
+        :nth-child(2n) {
+            margin-left: ${({ theme: { spacing } }) => spacing.small};
+        }
+    }
+`

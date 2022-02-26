@@ -23,6 +23,9 @@ const annotations: DockerImageProps['annotations'] = {
         command: 'build',
         description: 'use the DockerFile to build a container image',
         example: 'docker build -t docker-image-name .',
-        observations: [{ command: '-t', text: 'tags the image to a human readable name ' }],
+        observations: [
+            { command: '-t', text: 'tags the image to a human readable name ' },
+            { command: '.', text: 'the relative path to Dockerfile, that contain the instructions to mount the image' },
+        ],
     },
 }
