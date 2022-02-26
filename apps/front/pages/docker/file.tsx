@@ -22,21 +22,29 @@ const annotations: DockerFileProps['annotations'] = {
     FROM: {
         command: 'FROM',
         description: 'The container you want to start from',
-        example: 'FROM node:16-alpine',
+        example: {
+            text: 'FROM node:16-alpine',
+        },
     },
     WORKDIR: {
         command: 'WORKDIR',
         description: 'The root directory where the application will stand',
-        example: 'WORKDIR /app',
+        example: {
+            text: 'WORKDIR /app',
+        },
     },
     RUN: {
         command: 'RUN',
         description: 'The command to run from the WORKDIR',
-        example: 'RUN npm i',
+        example: {
+            text: 'RUN npm i',
+        },
     },
     CMD: {
         command: 'CMD',
         description: 'The default command to run when starting a container from an image',
-        example: 'CMD ["npm", "run", "dev"]',
+        example: {
+            text: 'CMD ["npm", "run", "dev"]',
+        },
     },
 }

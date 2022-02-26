@@ -50,7 +50,7 @@ const AnnotationsComponent: React.FC<AnnotationsComponentProps> = ({
                                 <ExplanationCommand>{item.command}: </ExplanationCommand>
                                 <ExplanationDescription>{item.description}</ExplanationDescription>
                             </Explanation>
-                            {!!item.example && <Example>{item.example}</Example>}
+                            {!!item.example && <Example>{item.example.text}</Example>}
                         </Item>
                     ))}
                 </ItemsContainer>

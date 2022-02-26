@@ -13,8 +13,10 @@ declare type Annotations<T extends string> = {
     [K in T]: {
         command: K
         description: string
-        example?: string
-        observations?: Array<AnnotationsObservation>
+        example?: {
+            text: string
+            observations?: Array<AnnotationsObservation>
+        }
     }
 }
 
