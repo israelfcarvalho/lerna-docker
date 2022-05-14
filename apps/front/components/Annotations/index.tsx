@@ -9,6 +9,11 @@ import {
     ExplanationCommand,
     ExplanationDescription,
     Example,
+    ExampleText,
+    ExampleObservations,
+    Observation,
+    ObservationCommand,
+    ObservationText,
 } from './styles'
 
 type AnnotationsItem = PossibleValues<Annotations<any>>
@@ -50,7 +55,23 @@ const AnnotationsComponent: React.FC<AnnotationsComponentProps> = ({
                                 <ExplanationCommand>{item.command}: </ExplanationCommand>
                                 <ExplanationDescription>{item.description}</ExplanationDescription>
                             </Explanation>
-                            {!!item.example && <Example>{item.example.text}</Example>}
+                            {!!item.example && (
+                                <Example>
+                                    <ExampleText>{item.example.text}</ExampleText>
+                                    {!!item.example.observations && (
+                                        <ExampleObservations>
+                                            {item.example.observations.map((observation, index) => (
+                                                <Observation key={index}>
+                                                    {!!observation.command && (
+                                                        <ObservationCommand>{observation.command}: </ObservationCommand>
+                                                    )}
+                                                    <ObservationText>{observation.text}</ObservationText>
+                                                </Observation>
+                                            ))}
+                                        </ExampleObservations>
+                                    )}
+                                </Example>
+                            )}
                         </Item>
                     ))}
                 </ItemsContainer>

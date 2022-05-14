@@ -26,13 +26,23 @@ export const ExplanationCommand = styled.span`
 `
 export const ExplanationDescription = styled.span``
 
-export const Example = styled.p`
+export const Example = styled.div`
     margin: 0;
     padding: ${({ theme: { spacing } }) => spacing.medium};
 
     background-color: ${({ theme: { colors } }) => colors.greyLight30};
     box-shadow: ${({ theme: { colors } }) => `-8px 0 8px 0 ${colors.greyLight20} inset`};
 `
+
+export const ExampleText = styled.p``
+
+export const ExampleObservations = styled.ul``
+
+export const Observation = styled.li``
+
+export const ObservationCommand = styled.span``
+
+export const ObservationText = styled.span``
 
 export const EmptyList = styled.p`
     flex: 0.8;
