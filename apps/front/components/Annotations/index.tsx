@@ -14,6 +14,8 @@ import {
     Observation,
     ObservationCommand,
     ObservationText,
+    DescriptionContainer,
+    Description,
 } from './styles'
 
 type AnnotationsItem = PossibleValues<Annotations<any>>
@@ -25,6 +27,7 @@ interface AnnotationsData {
 
 interface AnnotationsComponentProps {
     title?: string
+    description?: Array<string>
     annotations: Annotations<any>
     emptyListMessage?: string
 }
@@ -33,6 +36,7 @@ const AnnotationsComponent: React.FC<AnnotationsComponentProps> = ({
     annotations,
     title,
     emptyListMessage = 'No content',
+    description = [],
 }) => {
     const { hasAnnotations, items } = useMemo<AnnotationsData>(() => {
         const annotationsItems = Object.keys(annotations).map(annotationKey => annotations[annotationKey])
@@ -47,6 +51,13 @@ const AnnotationsComponent: React.FC<AnnotationsComponentProps> = ({
     return (
         <Container>
             {!!title && <Title>{title}</Title>}
+            {!!description.length && (
+                <DescriptionContainer>
+                    {description.map((paragraph, index) => (
+                        <Description key={index}>{paragraph}</Description>
+                    ))}
+                </DescriptionContainer>
+            )}
             {hasAnnotations ? (
                 <ItemsContainer>
                     {items.map((item, itemIndex) => (

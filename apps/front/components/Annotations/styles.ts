@@ -3,17 +3,33 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+
     height: 100%;
+    padding: ${({ theme: { spacing } }) => `${spacing.medium} ${spacing.huge} 0`};
 `
 
 export const Title = styled.h1`
     text-align: center;
 `
 
+export const DescriptionContainer = styled.div`
+    color: ${({ theme: { colors } }) => colors.grey};
+`
+
+export const Description = styled.p`
+    margin: 0;
+
+    text-indent: ${({ theme: { spacing } }) => spacing.medium};
+
+    & + & {
+        margin-top: ${({ theme: { spacing } }) => spacing.small};
+    }
+`
+
 export const ItemsContainer = styled.ul`
     display: grid;
-
-    padding: ${({ theme: { spacing } }) => `0 ${spacing.huge}`};
+    align-self: flex-start;
 `
 
 export const Item = styled.li``
