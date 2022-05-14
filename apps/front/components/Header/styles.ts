@@ -39,7 +39,7 @@ export const Home = styled.div`
 
 export const Routes = styled.div`
     > * {
-        :nth-child(2n) {
+        :nth-child(n + 2) {
             margin-left: ${({ theme: { spacing } }) => spacing.small};
         }
     }

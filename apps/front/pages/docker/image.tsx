@@ -16,8 +16,6 @@ export const getStaticProps: GetStaticProps<DockerImageProps> = () => {
     return { props: { annotations } }
 }
 
-export default DockerImage
-
 const annotations: DockerImageProps['annotations'] = {
     build: {
         command: 'build',
@@ -34,3 +32,5 @@ const annotations: DockerImageProps['annotations'] = {
         },
     },
 }
+
+export default DockerImage
