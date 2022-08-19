@@ -31,7 +31,7 @@
     },
     "prettier": "@facanha/eslint-config/.prettierrc.json",
     "devDependencies": {
-        "@facanha/eslint-config": "1.0.0",
+        "@facanha/eslint-config": "1.0.1",
         "@nestjs/cli": "^8.0.0",
         "@nestjs/schematics": "^8.0.0",
         "@nestjs/testing": "^8.0.0",

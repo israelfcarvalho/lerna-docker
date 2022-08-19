@@ -15,6 +15,7 @@ module.exports = {
     },
     plugins: ['prettier', '@typescript-eslint'],
     rules: {
+        'no-undef': 'off',
         'no-unused-vars': 'error',
         'prettier/prettier': ['error', prettierConfig],
         '@typescript-eslint/padding-line-between-statements': 'error',
