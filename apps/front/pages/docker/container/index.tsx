@@ -1,5 +1,5 @@
 import { GetStaticProps, NextPage } from 'next'
-import AnnotationsComponent from '../../components/Annotations'
+import AnnotationsComponent from '../../../components/Annotations'
 
 type DockerContainerAnnotations = 'run' | 'ps' | 'stop' | 'rm'
 

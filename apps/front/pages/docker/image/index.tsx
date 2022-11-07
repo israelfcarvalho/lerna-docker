@@ -1,6 +1,6 @@
 import { NextPage, GetStaticProps } from 'next'
 import React from 'react'
-import AnnotationsComponent from '../../components/Annotations'
+import AnnotationsComponent from '../../../components/Annotations'
 
 type DockerImageAnnotations = 'build' | 'push' | 'tag'
 
