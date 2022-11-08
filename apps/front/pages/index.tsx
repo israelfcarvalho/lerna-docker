@@ -24,10 +24,6 @@ const Home: NextPage<HomeProps> = ({ showFooter }) => {
 export function getServerSideProps({
     query: { showFooter },
 }: GetServerSidePropsContext): GetServerSidePropsResult<HomeProps> {
-    console.log({
-        showFooter,
-    })
-
     return {
         props: {
             showFooter: Boolean(showFooter),

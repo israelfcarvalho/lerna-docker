@@ -10,7 +10,7 @@ export interface User {
 export type Users = Array<User>
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const users = readFileSync(path.resolve(__dirname, '../../../../.db/users.json'))
+    const users = readFileSync(path.resolve(__dirname, '.db/users.json'))
 
     res.json(users)
 }
