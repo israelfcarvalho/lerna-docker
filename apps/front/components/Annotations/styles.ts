@@ -56,7 +56,11 @@ export const ExampleObservations = styled.ul``
 
 export const Observation = styled.li``
 
-export const ObservationCommand = styled.span``
+export const ObservationCommand = styled.span`
+    color: ${({ theme: { colors } }) => colors.blue};
+    font-weight: bold;
+    font-size: large;
+`
 
 export const ObservationText = styled.span``
 

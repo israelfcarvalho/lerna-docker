@@ -1,10 +1,13 @@
 {
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll": true
-    },
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  }
 }

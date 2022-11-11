@@ -8,6 +8,7 @@ const HeaderContainer: React.FC = () => {
             { name: 'Docker Image', path: '/docker/image' },
             { name: 'Docker File', path: '/docker/file' },
             { name: 'Docker Container', path: '/docker/container' },
+            { name: 'Docker Volume', path: '/docker/volume' },
         ],
         []
     )

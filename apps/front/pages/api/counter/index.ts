@@ -1,6 +1,5 @@
-import { readFileSync } from 'fs'
 import { NextApiRequest, NextApiResponse } from 'next'
-import path from 'path'
+import { getCounter } from '../../../services/counter'
 
 export interface User {
     name: string
@@ -10,7 +9,11 @@ export interface User {
 export type Users = Array<User>
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const users = readFileSync(path.resolve(__dirname, '.db/users.json'))
+    const counter = getCounter()
 
-    res.json(users)
+    if (!counter) {
+        return res.json({ status: 404, message: 'counter not initiated' })
+    }
+
+    res.json(counter)
 }

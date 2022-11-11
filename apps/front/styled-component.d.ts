@@ -18,6 +18,7 @@ declare module 'styled-components' {
             greyLight10: string
             greyLight20: string
             greyLight30: string
+            blue: string
         }
     }
 }

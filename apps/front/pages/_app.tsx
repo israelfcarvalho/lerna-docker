@@ -18,6 +18,7 @@ const theme: DefaultTheme = {
         greyLight10: '#a9a9a9',
         greyLight20: '#c9c9c9',
         greyLight30: '#efefef',
+        blue: '#3944bc',
     },
 }
 
