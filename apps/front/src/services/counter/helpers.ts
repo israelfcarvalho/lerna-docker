@@ -1,6 +1,5 @@
 import { writeFileSync, existsSync, mkdirSync } from 'fs'
 import path from 'path'
-import { cwd } from 'process'
 
 const initialCounter: Counter = {
     count: 0,
@@ -8,7 +7,7 @@ const initialCounter: Counter = {
     updated: new Date().toLocaleString(),
 }
 
-const counterDir = path.resolve(cwd(), '.db/counter')
+const counterDir = path.resolve('/app/.db/counter')
 const counterFileName = 'data.json'
 export const dataFilePath = path.resolve(counterDir, counterFileName)
 

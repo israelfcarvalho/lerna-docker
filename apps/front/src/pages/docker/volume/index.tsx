@@ -9,11 +9,7 @@ interface DockerVolumeProps {
 }
 
 const DockerVolume: NextPage<DockerVolumeProps> = ({ description, annotations }) => {
-    return (
-        <>
-            <AnnotationsComponent title="Docker Volume" description={description} annotations={annotations} />
-        </>
-    )
+    return <AnnotationsComponent title="Docker Volume" description={description} annotations={annotations} />
 }
 
 export const getStaticProps: GetStaticProps<DockerVolumeProps> = () => {
