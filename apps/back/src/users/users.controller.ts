@@ -20,20 +20,38 @@ const dbDir = resolve(process.cwd(), 'src/.db')
 const dbFile = 'users.json'
 const dbPath = resolve(dbDir, dbFile)
 
-function writeUser(user: User, users: Users) {
+const emptyUsers: Users = {}
+
+function writeUsers(users = emptyUsers): UsersDto {
     const usersDto: UsersDto = {
-        users: {
-            ...users,
-            [user.name]: user,
-        },
+        users,
     }
 
     writeFileSync(dbPath, JSON.stringify(usersDto))
-    return usersDto.users
+
+    return usersDto
+}
+
+function writeUser(user: User, users: Users): UsersDto {
+    const newUsers: Users = {
+        ...users,
+        [user.name]: user,
+    }
+
+    return writeUsers(newUsers)
 }
 
 function readUsers(): UsersDto {
     return JSON.parse(readFileSync(dbPath, { encoding: 'utf8' }))
+}
+
+function initiateUsers(): UsersDto {
+    if (!existsSync(dbPath)) {
+        mkdirSync(dbDir, { recursive: true })
+        return writeUsers()
+    }
+
+    return readUsers()
 }
 
 @Controller({ path: 'users' /*, host: '*'*/ })
@@ -46,13 +64,9 @@ export class UsersController {
     }
 
     private initiate() {
-        if (!existsSync(dbPath)) {
-            mkdirSync(dbDir, { recursive: true })
-            this.users = writeUser({} as User, {})
-        } else {
-            this.users = readUsers().users
-        }
+        const usersDto = initiateUsers()
 
+        this.users = usersDto.users
         this._upToDate = true
     }
 
@@ -117,8 +131,11 @@ export class UsersController {
                 birthDate: body.birthDate,
             }
 
-            this.users = writeUser(user, this.users)
-            return this.users
+            const usersDto = writeUser(user, this.users)
+
+            this.users = usersDto.users
+
+            return usersDto.users[user.name]
         } catch (error) {
             throw new HttpException('', HttpStatus.INTERNAL_SERVER_ERROR)
         }
