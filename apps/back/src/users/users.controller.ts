@@ -11,45 +11,62 @@ import {
     Query,
     Redirect,
 } from '@nestjs/common'
-import { readFileSync, writeFileSync } from 'fs'
-import { join } from 'path'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import { resolve } from 'path'
 import { BadRequestException } from 'src/errors/exceptions'
-import { CreateUserDto, User } from './users.dto'
+import { CreateUserDto, User, Users, UsersDto } from './users.dto'
 
-function fetchUsers() {
-    return JSON.parse(readFileSync(join(process.cwd(), 'src/.db/users.json'), { encoding: 'utf8' }))
+const dbDir = resolve(process.cwd(), 'src/.db')
+const dbFile = 'users.json'
+const dbPath = resolve(dbDir, dbFile)
+
+function writeUser(user: User, users: Users) {
+    const usersDto: UsersDto = {
+        users: {
+            ...users,
+            [user.name]: user,
+        },
+    }
+
+    writeFileSync(dbPath, JSON.stringify(usersDto))
+    return usersDto.users
+}
+
+function readUsers(): UsersDto {
+    return JSON.parse(readFileSync(dbPath, { encoding: 'utf8' }))
 }
 
 @Controller({ path: 'users' /*, host: '*'*/ })
 export class UsersController {
     private _upToDate = false
-    private _nextId = 0
-    private _users: Array<User> = []
+    private _users: Users
 
     constructor() {
         this.initiate()
     }
 
     private initiate() {
-        const users: Array<User> = fetchUsers()
-        const lastUserIndex = users.length ? users.length - 1 : 0
+        if (!existsSync(dbPath)) {
+            mkdirSync(dbDir, { recursive: true })
+            this.users = writeUser({} as User, {})
+        } else {
+            this.users = readUsers().users
+        }
 
-        const nextId = (users[lastUserIndex].id || 0) + 1
-
-        this._nextId = nextId
-        this.users = users
         this._upToDate = true
     }
 
     get users() {
         if (!this._upToDate) {
-            this.users = fetchUsers()
+            const usersDto = readUsers()
+
+            this.users = usersDto.users
         }
 
         return this._users
     }
 
-    set users(data: Array<User>) {
+    set users(data: Users) {
         this._users = data
     }
 
@@ -68,10 +85,10 @@ export class UsersController {
 
     @Get(':id')
     findById(@Param('id') id) {
-        const user = this.users.find(user => user.id == id)
+        const user = this.users[id]
 
         if (!user) {
-            throw new HttpException("User dont't exists", HttpStatus.NOT_FOUND)
+            throw new HttpException(`User dont't exists`, HttpStatus.NOT_FOUND)
         }
 
         return user
@@ -81,7 +98,6 @@ export class UsersController {
     @HttpCode(HttpStatus.CREATED)
     add(@Body() body: Partial<CreateUserDto>) {
         const errors: Array<string> = []
-        const oldUsers = this.users
 
         if (!body.birthDate) {
             errors.push('birthDate is required and needs to be grater than 0!')
@@ -96,15 +112,13 @@ export class UsersController {
         }
 
         try {
-            const newUsers = oldUsers.concat({
-                id: this._nextId,
-                name: body.name || '',
-                birthDate: body.birthDate || '',
-            })
+            const user = {
+                name: body.name,
+                birthDate: body.birthDate,
+            }
 
-            writeFileSync(join(process.cwd(), 'src/.db/users.json'), JSON.stringify(newUsers), { encoding: 'utf8' })
-            this._upToDate = false
-            return this._nextId
+            this.users = writeUser(user, this.users)
+            return this.users
         } catch (error) {
             throw new HttpException('', HttpStatus.INTERNAL_SERVER_ERROR)
         }
