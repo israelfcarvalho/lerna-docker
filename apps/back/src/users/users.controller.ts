@@ -14,7 +14,6 @@ import {
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
 import { resolve } from 'path'
 import { BadRequestException } from 'src/errors/exceptions'
-import { CreateUserDto, User, Users, UsersDto } from './users.dto'
 
 const dbDir = resolve(process.cwd(), 'src/.db')
 const dbFile = 'users.json'

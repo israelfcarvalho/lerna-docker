@@ -1,17 +1,17 @@
-export interface User {
+declare interface User {
     name: string
     birthDate: string
 }
 
-export interface Users {
+declare interface Users {
     [key: string]: User | undefined
 }
 
-export interface UsersDto {
+declare interface UsersDto {
     users: Users
 }
 
-export class CreateUserDto implements Omit<User, 'id'> {
+declare class CreateUserDto implements Omit<User, 'id'> {
     name: string
     birthDate: string
 }
