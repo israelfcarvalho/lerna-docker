@@ -1,0 +1,17 @@
+#git
+.gitignore
+.git
+README.md
+
+#app
+.env
+.next
+node_modules
+
+#docker
+.dockerignore
+docker-build.sh
+docker-run.sh
+docker-volumes.sh
+docker
+Dockerfile
