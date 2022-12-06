@@ -8,11 +8,6 @@ COPY . /app
 
 RUN npm i
 
-#production build (ugly code)
-# RUN npm run build
+RUN npm run build
 
-# CMD ["npm", "run", "start"]
-
-RUN ls -la
-
-CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "start"]

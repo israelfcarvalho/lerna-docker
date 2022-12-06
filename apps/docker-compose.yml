@@ -1,0 +1,26 @@
+services:
+  front:
+    build:
+      context: ./front
+      dockerfile: development.Dockerfile
+
+    ports:
+      - 3000:3000
+    volumes:
+      - lerna-docker-frontCounter:/app/.db/counter
+      - ./front/src:/app/src
+    environment:
+      REACT_APP_BACK_HOST: back
+
+  back:
+    build:
+      context: ./back
+      dockerfile: development.Dockerfile
+    ports:
+      - 4000:4000
+    volumes:
+      - lerna-docker-apps-users:/app/src/.db
+
+volumes:
+  lerna-docker-apps-users:
+  lerna-docker-frontCounter:
