@@ -21,7 +21,7 @@ export const getStaticProps: GetStaticProps<DockerComposeCliProps> = () => {
 export default DockerComposeCli
 
 const props: DockerComposeCliProps = {
-    description: ['the file with instructions to create and run our services'],
+    description: ['commands to run on terminal using docker compose cli'],
     annotations: {
         up: {
             command: 'up',
