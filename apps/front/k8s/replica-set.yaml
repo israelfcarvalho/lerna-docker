@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: lerna-docker-apps-front-rc
+  labels:
+    app: lerna-docker-apps-front
+    type: frontend
+spec:
+  template:
+    metadata:
+      name: lerna-docker-apps-front
+      labels:
+        name: lerna-docker-apps-front
+        lib: NextJs
+        type: frontend
+        environment: production
+    spec:
+      containers:
+        - name: lerna-docker-apps-front-container
+          image: israelfacanha/lerna-docker-apps-front
+          resources:
+              limits:
+                  memory: '128Mi'
+                  cpu: '500m'
+          ports:
+              - containerPort: 3000
+  selector:
+    matchLabels:
+      name: lerna-docker-apps-front
+  replicas: 3
+    
