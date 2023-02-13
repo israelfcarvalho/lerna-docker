@@ -3,8 +3,7 @@ kind: Pod
 metadata:
     name: lerna-docker-apps-front
     labels:
-        name: lerna-docker-apps-front
-        lib: NextJs
+        app: lerna-docker-apps-front
         type: frontend
         environment: production
 spec:
