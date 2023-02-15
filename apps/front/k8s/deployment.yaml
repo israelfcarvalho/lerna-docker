@@ -20,11 +20,14 @@ spec:
             containers:
                 - name: lerna-docker-apps-front-container
                   image: israelfacanha/lerna-docker-apps-front
+                  env:
+                      - name: REACT_APP_BACK_HOST
+                        value: lerna-docker-apps-back-service
                   resources:
                       limits:
                           memory: '128Mi'
                           cpu: '500m'
                   ports:
                       - containerPort: 3000
-    replicas: 5
+    replicas: 4
     progressDeadlineSeconds: 300
