@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: lerna-docker-apps-back-deploy
+    labels:
+        app: lerna-docker-apps-back
+        tier: backend
+spec:
+    selector:
+        matchLabels:
+            app: lerna-docker-apps-back
+    template:
+        metadata:
+            name: lerna-docker-apps-back
+            labels:
+                app: lerna-docker-apps-back
+                type: backend
+                environment: production
+        spec:
+            containers:
+                - name: lerna-docker-apps-back-container
+                  image: israelfacanha/lerna-docker-apps-back
+                  resources:
+                      limits:
+                          memory: '128Mi'
+                          cpu: '500m'
+                  ports:
+                      - containerPort: 4000
+    replicas: 4
+    progressDeadlineSeconds: 300
