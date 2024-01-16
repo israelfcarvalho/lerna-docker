@@ -2,6 +2,7 @@ import { AppProps } from 'next/app'
 import { ThemeProvider, DefaultTheme } from 'styled-components'
 import PageWrapper from '../components/PageWraper'
 import { GlobalStyle } from '../styles/Global.styles'
+import { sum } from '@facanha/mat'
 
 const theme: DefaultTheme = {
     spacing: {
@@ -23,6 +24,9 @@ const theme: DefaultTheme = {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+    const numbers = [1, 34, -9, 0]
+    const soma = sum
+
     return (
         <ThemeProvider theme={theme}>
             <GlobalStyle />
