@@ -6,7 +6,6 @@
 	],
     "plugins": [ "react", "better-styled-components"],
 	"rules": {
-        "json/json": ["error", "allowComments"],
 		"camelcase": "warn"
 	}
 }
